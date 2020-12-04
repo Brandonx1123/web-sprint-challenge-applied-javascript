@@ -17,9 +17,9 @@ function Header() {
     const headerTitle = document.createElement('h1');
     const temp = document.createElement('span');
 
-    date.textContent = 'March 28, 2020';
-    headerTitle.textContent = 'Lambda Times';
-    temp.textContent = '98°';
+    date.textContent = `March 28, 2020`;
+    headerTitle.textContent = `Lambda Times`;
+    temp.textContent = `98°`;
 
     headerDiv.classList.add('header');
     date.classList.add('date');
