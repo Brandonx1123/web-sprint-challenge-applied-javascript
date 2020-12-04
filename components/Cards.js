@@ -22,8 +22,8 @@
 // Use your function to create a card for each of the articles, and append each card to the DOM.
 
 import axios from "axios";
-console.log(axios);
-const newArray = axios
+console.log(axios); 
+ axios
 .get('https://lambda-times-api.herokuapp.com/articles')
 .then ((res) =>{
     const getNewData =res.data
@@ -67,16 +67,16 @@ return card
 
 
 
-newArray.forEach((articles)=>{
-    axios
-    .get(`https://lambda-times-api.herokuapp.com/${articles}`)
-    .then ((res) =>{
-        const getNewData =res.data
-        console.log(res);
-        const newCard = document.querySelector('.cards-container')
-        newCard.appendChild(CardMaker(res));
-    })
-    .catch((err) =>{
-        console.log(err)
-    })
-})  
+// newArray.forEach((articles)=>{
+//     axios
+//     .get(`https://lambda-times-api.herokuapp.com/${articles}`)
+//     .then ((res) =>{
+//         const getNewData =res.data
+//         console.log(res);
+//         const newCard = document.querySelector('.cards-container')
+//         newCard.appendChild(CardMaker(res));
+//     })
+//     .catch((err) =>{
+//         console.log(err)
+//     })
+// })  
