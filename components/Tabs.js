@@ -16,21 +16,25 @@ console.log(axios);
 axios
 .get('https://lambda-times-api.herokuapp.com/topics')
 .then ((res) =>{
-    const getdata =res.data
-    console.log(res);
-    const newTab = document.querySelector('.topics')
-    newTab.appendChild(tabMaker(res));
+    const getdata =res.data.topics
+    console.log(res)
+    getdata.forEach(item =>{
+        newTab.appendChild(tabMaker(item))
+    })
 })
 .catch ((err) =>{
     console.log(err)
 })
 
+const newTab = document.querySelector('.topics');
+
 function tabMaker (obj){
 
 const tabDiv = document.createElement('div');
-tabDiv.textContent =obj.data.topics;
+tabDiv.textContent =obj;
 tabDiv.classList.add('tab');
-
-
+newTab.appendChild(tabDiv)
 return tabDiv;
+
 }
+
