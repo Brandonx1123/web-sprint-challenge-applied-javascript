@@ -20,3 +20,70 @@
 // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
+
+import axios from "axios";
+console.log(axios); 
+ axios
+.get('https://lambda-times-api.herokuapp.com/articles')
+.then ((res) =>{
+    const getNewData =Object.values(res.data.articles)
+    getNewData.map(item=>{
+        item.forEach(newObj =>{
+           cardContainer.appendChild(CardMaker(newObj));
+        })
+    })
+    
+    
+})
+.catch((err) =>{
+    console.log(err)
+})
+
+const cardContainer = document.querySelector('.cards-container');
+
+function CardMaker(obj){
+    const card = document.createElement('div');
+    const headline = document.createElement('div');
+    const author =document.createElement ('div');
+    const imgBox = document.createElement ('div');
+    const image = document.createElement ('img');
+    const authorName = document.createElement ('span');
+    
+    headline.textContent = obj.headline;
+    image.src = obj.authorPhoto
+    authorName.textContent = obj.authorName;
+
+    card.classList.add('card');
+    headline.classList.add('headline');
+    author.classList.add('author');
+    imgBox.classList.add('img-container');
+
+    card.appendChild(headline);
+    headline.appendChild(author);
+    author.appendChild(imgBox);
+    imgBox.appendChild(image);
+    author.appendChild(authorName);
+
+    card.addEventListener('click', ()=>{
+        // console.log(headline)
+        console.log(obj.headline)
+    })
+
+return card 
+}
+
+
+
+// newArray.forEach((articles)=>{
+//     axios
+//     .get(`https://lambda-times-api.herokuapp.com/${articles}`)
+//     .then ((res) =>{
+//         const getNewData =res.data
+//         console.log(res);
+//         const newCard = document.querySelector('.cards-container')
+//         newCard.appendChild(CardMaker(res));
+//     })
+//     .catch((err) =>{
+//         console.log(err)
+//     })
+// })  
